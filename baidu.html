@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度</title>
+</head>
+<style>
+    html {
+        font-size:1vw;
+        width:100%;
+        height:100%;
+    }
+    div {
+    display: block;
+    unicode-bidi: isolate;
+    }
+    body {
+        width:100%;
+        height:100%;
+        margin:0;
+        padding:0;
+        overflow-y: scroll; 
+    }
+    #wall {
+        width:100%;
+        height:100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #head{
+        width:100%;
+        height:5%;
+        position:absolute;
+        top:0;
+        left:0;
+        display:inline-block;
+        border-radius:3%;
+        backdrop-filter:blur(500px);
+    }
+    #tool{
+        width:30%;
+        height:100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        float:left;
+        gap:4%;
+        border-radius: 3%;
+    }
+    #information{
+        width:20%;
+        height:100%;
+        display:flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        float:right;
+        gap:8%;
+        border-radius: 3%;
+    }
+    #main{
+        width:35%;
+        height:22%;
+        position:absolute;
+        top:15%;
+        display:flex;  
+        justify-content: center;
+        align-items: center;
+    }
+    #logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:32%;
+        height:28%;
+        position: relative;
+        bottom: 25%;
+    }
+    #logo_img{
+        width: 100%;
+        height: 100%;
+    }
+    #search{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+        height:15%;
+        position:absolute;
+        top:50%;
+    }
+    #input{
+        width:80%;
+        height:100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px 0px 0px 5px;
+    }
+    #button{
+        width:20%;
+        height:120%;
+        background-color: #4e6ef2;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0px 5px 5px 0px;
+        color:#fff;
+        cursor: pointer;
+    }
+    input{
+        width:100%;
+    }
+    #baiduAI{
+        width:70%;
+        height:15%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        position:absolute;
+        top:80%;
+        border-radius:5px;
+
+    }
+    #AI_button{
+        width:100%;
+        height:100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #edf6ff;
+        border-radius:25px;
+    }
+    #AI_logo{
+        width: 20%;
+        height: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        position:absolute;
+        left:2%;
+        border-radius: 5px 0px 0px 5px;
+    }
+    #AI_logo_img{
+        width: 80%;
+        height: 60%;
+    }
+    #AI_name{
+        width: 60%;
+        height: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        position:absolute;
+        left:20%;
+        font-size: 130%;
+    }
+    #AI_content{
+        width: 18%;
+        height: 70%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        position:absolute;
+        left:80%;
+        border-radius: 25px;
+        background-color: #fdfeff;
+        font-size: 120%;
+        color: #4e6ef2;
+    }
+    #nav{
+        width:35%;
+        height:28%;
+        position:absolute;
+        top:40%
+    }
+    #hot_search{
+        width: 100%;
+        height: 15%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #hot_search_img{
+        width: 100%;
+        height: 100%;
+    }
+    #nav_main{
+        width: 100%;
+        height: 85%;
+        margin:0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    ul{
+        margin:0;
+        padding:0;
+        list-style-type: none;
+    }
+    #left{
+        width:45%;
+        height: 65%;
+        position:absolute;
+        left:0%;
+        top: 20%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5%;
+    }
+    #right{
+        width:45%;
+        height: 65%;
+        position:absolute;
+        right:0%;
+        top: 20%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5%;
+    }
+    .left,.right{
+        font-size: 120%;
+        display:inline;
+    }
+    
+    #suspension{
+        width: 2.3%;
+        height: 8%;
+        background-color: rgb(245, 245, 245);
+        position: fixed;
+        top: 84%;
+        left: 96.5%;
+        border-radius: 21px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        cursor: pointer;
+        flex-direction: column; 
+    }
+    #up{
+        width: 100%;
+        height: 50%;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #down{
+        width: 100%;
+        height: 50%;
+        border-radius: 50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    #up:hover{
+        box-shadow: 0vw 0.05vw 0.05vw 0.01vw rgb(175, 175, 175);
+    }
+    #down:hover{
+        box-shadow: 0vw 0.05vw 0.05vw 0.01vw rgb(175, 175, 175);
+    }
+
+    a{
+        text-decoration: none;
+        display: inline-block;
+        color: rgb(0, 0, 0);
+        font-size: 70%;
+        white-space: nowrap;
+    }
+    #head a{
+    width:5%
+    }
+    #head a:hover,#hot_search a:hover {
+    color: blue;
+    }
+    #img,#img2{
+        width: 120%;
+        border-radius: 50%;
+    }
+    #img3{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #img2{
+        border-color: rgb(0, 0, 0);
+        border-width: 1px;
+        border-style: solid;
+        padding: 2px;
+    }
+    #weather { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50%;
+    }
+    #weather:hover ~ #weather_main_div{ 
+        pointer-events: auto;
+        opacity: 1;
+    }
+    #set{
+        font-size: 70%;
+        position: relative;
+        left: 6%;
+    }
+    #set:hover~#set_main_div{ 
+        pointer-events: auto;
+        opacity: 1;
+    }
+    #me{
+        position: relative;
+        left: 12%;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        gap: 20%;
+    }
+    #unit{
+        background-color:rgb(109, 207, 109);
+        border-radius: 40%;
+        width: 6%;
+        font-size: 60%;
+        position: relative;
+        left: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(255, 255, 255);
+    }
+    #news1{
+        border: 0.15vw solid black;
+        border-radius: 10%;
+        padding-left: 0vw;
+        padding-right: 0vw;
+        padding-top: 0.01vw;
+    }
+    #weather_main{
+        width: 30vw;
+        height: 10vw;
+        position: relative;
+        top: 5%;
+        border-radius: 2%;
+        box-shadow: 0vw 0vw 0.1vw 0.1vw rgb(175, 175, 175);
+        
+    }
+    #weather_main_div{
+        width: 30vw;
+        height: 11vw;
+        
+        position: absolute;
+        top: 60%;
+        right:1%;
+        pointer-events: none;
+        opacity: 0;
+    }
+    #weather_main_div:hover{ 
+        pointer-events: auto;
+        opacity: 1;
+    }
+    #weather_day{
+        width: 100%;
+        height: 15%;
+
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #weather_day_date,#weather_day_date2,#weather_day_future{
+        font-size: 70%;
+        position: relative;
+        right: 30%;
+        cursor: default;
+    }
+    #weather_day_date2{
+        color: #9195a3;
+    }
+    #weather_day_future{
+        color: blue;
+    }
+    #switched{
+        position: relative;
+        left: 25%;
+    }
+    #weather_week{
+        width: 100%;
+        height: 83%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5%;
+        
+    }
+    #weather_week_day1,#weather_week_day2,#weather_week_day3,#weather_week_day4,#weather_week_day5,#weather_week_day6,#weather_week_day7{
+        width: 14%;
+        height:75%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 70%;
+        flex-direction: column;
+        border-radius:5px;
+    }
+    #weather_week_day1:hover,#weather_week_day2:hover,#weather_week_day3:hover,#weather_week_day4:hover,#weather_week_day5:hover,#weather_week_day6:hover,#weather_week_day7:hover{
+        box-shadow: 0vw 0vw 0.1vw 0.1vw rgb(175, 175, 175);
+        background-color: #fdfeff;
+    }
+    #img4{
+        width: 50%; 
+    }
+    #set_main_div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5vw;
+        height: 12vw;
+        position: absolute;
+        top: 60%;
+        right: 4.6%;
+        pointer-events: none;
+        opacity: 0;
+    }
+    #set_main_div:hover{
+        pointer-events: auto;
+        opacity: 1;
+    }
+    #set_main{
+        width: 90%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 2%;
+        box-shadow: 0vw 0vw 0.1vw 0.1vw rgb(175, 175, 175);
+        border-radius: 5px;
+        cursor: default;
+    }
+    .set_span{
+        font-size: 70%;
+    }
+    .set_span_-
+    {
+        font-size: 50%;
+        color: #9c9c9c;
+    }
+    #text {
+    width: 100%;
+    height: 110%;
+    border-radius: 5px 0px 0px 5px;
+    outline: none; 
+    font-size: 80%;
+    background-color: transparent;
+    color: #333; 
+    border: 0.1vw solid #b2b2b2;
+    padding: 0% 2%;
+    }
+    #app{
+        width:10%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position:relative;
+        right: 37%;
+        color: #9195a3;
+        font-size: 80%;
+    }
+    #app:hover,#hot:hover,#replace:hover{
+        color: blue;
+    }
+    #hot{
+        width: 10%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position:relative;
+        right: 33%;
+        color: #9195a3;
+        font-size: 80%;
+    }
+    #hot_search_img{
+        width: 80%;
+        height: 35%;
+    }
+    #replace{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position:relative;
+        left: 35%;
+        color: #9195a3;
+        font-size: 80%;
+    }
+    #hot_search_title{
+        font-size: 100%;
+        color: red;
+        position: relative;
+        right: 40%;
+        top: 22%;
+    }
+    #left_id:hover #content {
+    text-decoration: underline;
+    color: blue;
+    }
+    #right_id:hover #content {
+    text-decoration: underline;
+    color: blue;
+    }
+    #left_id{
+        width: 90%;
+    }
+    #right_id{
+        width: 90%;
+    }
+    #sort{
+        color: #9195a3;
+    }
+    #sort1{
+        color: #fe2d46;
+    }
+    #sort2{
+        color: #f60;
+    }
+    #sort3{
+        color: #faa90e;
+    }
+    #suffix_hot{
+        font-size: 60%;
+        width: 5%;
+        height: 35%;
+        background-color: red;
+        color: #edf6ff;
+        border-radius: 5px; 
+        position: relative;
+        right: 4%;
+    }
+    #suffix_hot1{
+        font-size: 60%;
+        width: 5%;
+        height: 35%;
+        background-color: red;
+        color: #edf6ff;
+        border-radius: 5px; 
+        position: relative;
+        left: 2%;
+    }
+    #suffix_new{
+        font-size: 60%;
+        width: 5%;
+        height: 35%;
+        background-color: orange;
+        color: #edf6ff;
+        border-radius: 5px; 
+        position: relative;
+        right: 10%;
+    }
+    #suffix_new1{
+        font-size: 60%;
+        width: 5%;
+        height: 35%;
+        background-color: orange;
+        color: #edf6ff;
+        border-radius: 5px; 
+        position: relative;
+        right: 0%;
+    }
+    #suspension_up_img{
+        width: 50%;
+    }
+    #suspension_down_img:hover{
+        content: url(https://pss.bdstatic.com/static/superman/img/side/qrcode-hover@2x-f9b106a848.png);
+    }
+    #suspension_down_img{
+        width: 60%;
+    }
+#foot{
+    width: 100%;
+    height: 3%;
+    position:absolute;
+    bottom:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#foot_main{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5%;
+}
+#foot_main_a{
+    color: #bbb;
+    font-size: 65%;
+}
+#foot_main_a0{
+    color: #bbb;
+    font-size: 65%;
+    cursor: default;
+}
+#foot_main_a1{
+    color: #bbb;
+    font-size: 120%;
+    cursor: pointer;
+}
+#foot_main_a:hover{
+    color: #000000;
+}
+#foot_main_div{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0vw 0vw 0.1vw 0.05vw rgb(175, 175, 175);
+    font-size: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #626675;
+    position: absolute;
+    bottom: 15%;
+}
+#foot_main_div_div{
+    width: 25%;
+    height:300%;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    bottom:50%;
+    left: 71%;
+}
+#foot_main_a1:hover~#foot_main_div_div,#foot_main_div_div:hover{
+    opacity: 1;
+    pointer-events: auto;
+}
+</style>
+<body>
+    <div id="wall">
+        <div id="head">
+            <div id="tool">
+                <a id="news"  href="https://news.baidu.com/" target="_blank">新闻</a>
+                <a id="hao123" href="https://www.hao123.com/" target="_blank">hao123</a>
+                <a id="map" href="https://map.baidu.com/" target="_blank">地图</a>
+                <a id="forum" href="https://tieba.baidu.com/index.html" target="_blank">贴吧</a>
+                <a id="video" href="https://haokan.baidu.com/?sfrom=baidu-top" target="_blank">视频</a>
+                <a id="picture" href="https://image.baidu.com/" target="_blank">图片</a>
+                <a id="network disk" href="https://pan.baidu.com/" target="_blank">网盘</a>
+                <a id="library" href="https://wenku.baidu.com/?fr=bdpcindex" target="_blank">文库</a>
+                <a id="ai+" href="https://chat.baidu.com/search?isShowHello=1&pd=csaitab&setype=csaitab&extParamsJson=%7B%22enter_type%22%3A%22home_tab%22%7D" target="_blank"><img id="img3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAAAqCAMAAAAqEZ1jAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAhOAAAITgBRZYxYAAAAKJQTFRFAAAAenb/RpP/k2j/XXf7cXX6P5z7i2n8W3j7ZHP7jmn9VID7Qpf8jWn8Xnr6iWr8YHb7i2n8RJb9dWz8WXr8mWj9RpP8W3n8bW/8l2j+QJz9Q5f9ToT8fWv9ZW/8lWj9VID8YnX7Pp79QZr9pWb+RJT8m2f9k2j9SYz8jWn9hmr8UIT8fmv8VX78Xnn7d2z8ZHT7WHr7bm77Xnb7Z3D7YHH7RJOQRAAAACJ0Uk5TABAgICAwQEBAWF5gZXBwgICbn5+fo7+/vsLP39/f3urv73XwOA8AAAKfSURBVHja7dbJcuIwFIXhIzCxMTMNcdwMDoMZY4NxeP9X66srEckYQlPVvcvPBhZ8dVSIAvz03xNV/Luq4Xq9Hgo8nfDqjXq97hS1yXZNhXg2Z3o+f1KnLqx62y17Pp5smp+158EUaW6I52rkxLF3eoNpt1Ne+bR+Fd8U5Oc8Px6P5M0Evgq11ytpy0jgbk6e5cSxd2pb7yKOikpTouWyhbsNMsnpefZpOzsCI7c8brkM74/LqFSC7HkwVTu9lsB14ZJy745LlDdV5+3iQTXC7s9z3pNEggOh9s3woOFqJT2BmzUSLnMQEEeeh2+rkraiOrjZeL+XXEBwyp71Ybg+hWL+iltGt8ftKQI9QMzSlDxz9VofssIMdxitdJEvbo3jxqAGKXtt6N4OkpvgkmiFa50Ch1UU8zab/Ya4Br/IUnnewHCHg+FEh7/ExUIXdq+KG4N7z3hfzXDkaa5FmGpdMENrYWWjaoDrJtJLu4ajFFfbUduryN1ue4brb2KpjSvgvETe53R24U6Ggz+RYJnsCTMujmMJ9qELErkv9y7cyXAGtNCoI2Dqx9ymAl1bcYMLJ2NO5fZ2dmHLxiBGrJlxEAl7M1HkTFUzseeiWHOxYK+CrwLltRX3qTk7/4PbTXDdaBHLxytMdcllaaA56U1RSEyU56M0jotfYBLvynM091ni0GGtPO73nLkR7AaK6yqOKnG1g+wXrnqZz9nrw87bszdjjn/dDGffbgdX9YmT4HykaoLTp/UABGfyypx7a1yFNb0wpl7BddW8geSO5JU5TE63xhmOPb2uok8reN1Nrn4qjQNBlmfdvkB5beaoMgdP4LpFgbNuX3svtSwABoZ7WPOKa0Inxgl7DurMdfFXVV7savjK8WQ1/cz5+Q9e7A/jUZeiPQO0fwAAAABJRU5ErkJggg=="></a>
+                <a id="more" href="https://www.baidu.com/baike/" target="_blank">更多</a>
+            </div>
+            <div id="information">
+                <a id="weather" target="_blank" href="https://weathernew.pae.baidu.com/weathernew/pc?query=%E6%B2%B3%E5%8D%97%E9%83%91%E5%B7%9E%E5%A4%A9%E6%B0%94&srcid=4982&forecast=long_day_forecast"><span></span><span>新郑</span><img id="img" src="https://dss1.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/weather/icons/a1.png">23℃</a>
+                <DIV id="weather_main_div">
+                <div id="weather_main">
+                    <div id="weather_day">
+                        <span id="weather_day_date" title="9月12日">9月12日&nbsp</span><span id="weather_day_date2" title="农历七月甘一">&nbsp农历&nbsp七月甘一 &nbsp&nbsp</span> <a id="weather_day_future" href="https://www.weather.com.cn/weather/101180106.shtml#7d">未来七天天气</a>
+                        <a id="switched" href="#111"><img src="">切换</a>
+                    </div>
+                    <div id="weather_week">
+                        <div id="weather_week_day1">
+                        <span>今天（周五）</span><img id="img4" src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/weather/icons2/a2.png"><span>18-24</span><span>阴转晴</span><span>北风1级</span>
+                        </div>
+                        <div id="weather_week_day2">
+                        <span>明天（周六）</span><img id="img4" src="https://dss2.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/weather/icons2/a0.png"><span>19-29</span><span>晴</span><span>北风2级</span>
+                        </div>
+                        <div id="weather_week_day3">
+                        <span>后天（周日）</span><img id="img4" src="https://dss2.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/weather/icons2/a8.png"><span>21-30</span><span>阴转小雨</span><span>南风1级</span>
+                        </div>
+                        <div id="weather_week_day4">
+                        <span>周一</span><img id="img4" src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/weather/icons2/a2.png"><span>22-29</span><span>小雨转阴</span><span>东南风1级</span>
+                        </div>
+                        <div id="weather_week_day5">
+                        <span>周二</span><img id="img4" src="https://dss2.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/weather/icons2/a8.png"><span>17-28</span><span>中雨</span><span>北风1级</span>
+                        </div>
+                    </div>
+                </div>
+                </DIV>
+                <div id="unit">优</div>
+                <a id="set" href="#111">设置</a>
+                <div id="set_main_div">
+                    <div id="set_main">
+                        <span class="set_span">搜索设置</span>
+                        <span class="set_span">首页设置</span>
+                        <span class="set_span">高级搜索</span>
+                        <span class="set_span">关闭预测</span>
+                        <span class="set_span">隐私设置</span>
+                        <span class="set_span">隐藏热搜</span>
+                        <span class="set_span_-">——————</span>
+                        <span class="set_span">更换皮肤</span>
+                    </div>
+                </div>
+                <a id="me" target="_blank" href="https://www.baidu.com/my/index"><img id="img2" src="https://himg.bdimg.com/sys/portraitn/item/public.1.7a643f57.84r3Y-_Rj3wTbfZYv_2qZw?_d=29294352"><span>登录</span></a>
+            </div>
+        </div>
+        
+        <div id="main">
+            <div id="logo">
+                <img id="logo_img" src="https://www.baidu.com/img/flexible/logo/pc/result.png" alt="百度logo"></img>
+            </div>
+            <div id="search">
+                <div id="input">
+                    <input type="text" id="text">
+                </div>
+                <div id="button">百度一下</div>
+            </div>
+            <div id="baiduAI">
+                <a id="AI_button"  target="_blank" href="https://chat.baidu.com/search?extParams=%7B%22enter_type%22%3A%22ai_explore_home%22%7D&isShowHello=1">
+                    <div id="AI_logo">
+                        <img id="AI_logo_img" src="https://aisearch.bj.bcebos.com/homepage/input_panel/aisearch_online.png">
+                    </div>
+                    <span id="AI_name">AI助手已支持DeepSeek-R1最新版</span>
+                    <div id="AI_content">立即体验</div>
+                </a>
+            </div>
+        </div>
+        <div id="nav">
+            <div id="hot_search">
+                <a id="app" href="#111">常用应用</a>
+                <a id="hot" target="_blank" href="https://top.baidu.com/board?platform=pc&sa=pcindex_entry"><img id="hot_search_img" src="https://psstatic.cdn.bcebos.com/basics/aichat/hot_search_x3_1747880381000.png">&nbsp;<span id="hot_search_p">></span></a>
+                <span id="hot_search_title">—</span>
+                <a id="replace" href="#111">换一换</a>
+            </div>
+            <div id="nav_main">
+                <ul id="left">
+                    <li class="left">
+                        <a id="left_id" target="_blank" href="https://www.baidu.com/s?wd=%E8%83%9C%E5%88%A9%E4%B9%8B%E5%B8%88%E8%BF%88%E5%90%91%E4%B8%96%E7%95%8C%E4%B8%80%E6%B5%81&sa=fyb_n_homepage&rsv_dl=fyb_n_homepage&from=super&cl=3&tn=baidutop10&fr=top1000&rsv_idx=2&hisfilter=1"><span id="sort1">1 &nbsp&nbsp</span><span id="content">胜利之师迈向世界一流</span></a><span id="suffix"></span>
+                    </li>
+                    <li class="left">
+                        <a id="left_id" target="_blank" href="https://www.baidu.com/s?wd=%E5%A4%A7%E6%9A%B4%E9%9B%A8%EF%BC%8110%E7%BA%A7%E4%BB%A5%E4%B8%8A%E9%9B%B7%E6%9A%B4%E5%A4%A7%E9%A3%8E%E5%B0%86%E6%9D%A5%E8%A2%AD&sa=fyb_n_homepage&rsv_dl=fyb_n_homepage&from=super&cl=3&tn=baidutop10&fr=top1000&rsv_idx=2&hisfilter=1"><span id="sort2">2&nbsp&nbsp</span><span id="content">大暴雨！10级以上雷暴大风将来袭</span></a>  <span id="suffix_hot">&nbsp热&nbsp</span>
+                    </li>
+                    <li class="left">
+                        <a id="left_id" target="_blank" href="https://www.baidu.com/s?wd=%E5%BE%AE%E4%BF%A1%E5%85%AC%E5%91%8A%EF%BC%9A%E8%BF%99%E7%A7%8D%E8%A1%8C%E4%B8%BA%E6%88%96%E6%B0%B8%E4%B9%85%E9%99%90%E5%88%B6%E7%99%BB%E5%BD%95&sa=fyb_n_homepage&rsv_dl=fyb_n_homepage&from=super&cl=3&tn=baidutop10&fr=top1000&rsv_idx=2&hisfilter=1"><span id="sort3">3&nbsp&nbsp</span><span id="content">微信公告：这种行为或永久限制登录</span></a>  <span id="suffix"></span> 
+                    </li>
+                    <li class="left">
+                        <a id="left_id" target="_blank" href="https://www.baidu.com/s?wd=%E6%8A%97%E7%BE%8E%E6%8F%B4%E6%9C%9D%E7%83%88%E5%A3%AB%E8%8B%B1%E7%81%B5%E6%B0%B8%E5%9E%82%E4%B8%8D%E6%9C%BD&sa=fyb_n_homepage&rsv_dl=fyb_n_homepage&from=super&cl=3&tn=baidutop10&fr=top1000&rsv_idx=2&hisfilter=1"><span id="sort">4&nbsp&nbsp</span><span id="content">抗美援朝烈士英灵永垂不朽</span></a>  <span id="suffix"></span>
+                    </li>
+                    <li class="left">
+                        <a id="left_id" target="_blank" href="https://www.baidu.com/s?wd=%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%BB%99%E6%97%A0%E4%BA%BA%E6%9C%BA%E8%A3%85%E4%B8%8A%E6%9C%BA%E6%A2%B0%E8%87%82&sa=fyb_n_homepage&rsv_dl=fyb_n_homepage&from=super&cl=3&tn=baidutop10&fr=top1000&rsv_idx=2&hisfilter=1"><span id="sort">5&nbsp&nbsp</span><span id="content">哈工大学生给无人机装上机械臂</span></a>  <span id="suffix_new">&nbsp新&nbsp</span>
+                    </li>
+                </ul>
+                <ul id="right">
+                    <li class="right">
+                        <a id="right_id" target="_blank" href="https://www.baidu.com/s?wd=%E5%B1%B1%E4%B8%9C%E4%B8%80%E4%B8%AD%E5%AD%A6%E9%A3%9F%E5%A0%82%E6%B2%A1%E5%BA%A7%E6%A4%85%E5%AD%A6%E7%94%9F%E7%AB%99%E7%9D%80%E5%90%83%E9%A5%AD&sa=fyb_n_homepage&rsv_dl=fyb_n_homepage&from=super&cl=3&tn=baidutop10&fr=top1000&rsv_idx=2&hisfilter=1"><span id="sort">6&nbsp&nbsp</span><span id="content">山东一中学食堂没座椅学生站着吃饭</span>  </a><span id="suffix_hot1">&nbsp热&nbsp</span>
+                    </li>
+                    <li class="right">
+                        <a id="right_id" target="_blank" href="https://www.baidu.com/s?wd=%E5%A5%B3%E5%AD%90%E8%A1%A8%E6%BC%94%E4%B8%8E%E8%9F%92%E8%9B%87%E4%BA%B2%E5%98%B4+%E6%9C%AA%E5%BC%A0%E5%98%B4%E5%B0%B1%E9%81%AD%E6%94%BB%E5%87%BB&sa=fyb_n_homepage&rsv_dl=fyb_n_homepage&from=super&cl=3&tn=baidutop10&fr=top1000&rsv_idx=2&hisfilter=1"><span id="sort">7&nbsp&nbsp</span><span id="content">女子表演与蟒蛇亲嘴 未张嘴就遭攻击</span>  </a><span id="suffix"></span>
+                    </li>
+                    <li class="right">
+                        <a id="right_id" target="_blank" href="https://www.baidu.com/s?wd=%E7%81%AB%E9%94%85%E5%B0%8F%E4%BE%BF%E8%B5%94220%E4%B8%87%EF%BC%9A%E5%AE%B6%E9%95%BF%E6%B2%A1%E6%95%99%E6%B3%95%E5%BE%8B%E4%BC%9A%E7%AE%A1&sa=fyb_n_homepage&rsv_dl=fyb_n_homepage&from=super&cl=3&tn=baidutop10&fr=top1000&rsv_idx=2&hisfilter=1"><span id="sort">8&nbsp&nbsp</span><span id="content">火锅小便赔220万:家长没教法律会管</span></a>  <span id="suffix_new1">&nbsp新&nbsp</span>
+                    </li>
+                    <li class="right">
+                        <a id="right_id" target="_blank" href="https://www.baidu.com/s?wd=%E9%A2%84%E5%88%B6%E8%8F%9C%E5%9B%BD%E6%A0%87%E8%8D%89%E6%A1%88%E8%BF%87%E5%AE%A1+%E5%B0%86%E5%85%AC%E5%BC%80%E5%BE%81%E6%B1%82%E6%84%8F%E8%A7%81&sa=fyb_n_homepage&rsv_dl=fyb_n_homepage&from=super&cl=3&tn=baidutop10&fr=top1000&rsv_idx=2&hisfilter=1"><span id="sort">9&nbsp&nbsp</span><span id="content">预制菜国标草案过审 将公开征求意见</span></a>  <span id="suffix"></span>
+                    </li>
+                    <li class="right">
+                        <a id="right_id" target="_blank" href="https://www.baidu.com/s?wd=%E9%80%80%E4%BC%8D%E5%9B%9E%E5%88%B0%E5%AE%B6%E4%BB%854%E5%B0%8F%E6%97%B6+%E4%BB%96%E6%95%91%E4%B8%8B%E6%95%B4%E6%A0%8B%E6%A5%BC&sa=fyb_n_homepage&rsv_dl=fyb_n_homepage&from=super&cl=3&tn=baidutop10&fr=top1000&rsv_idx=2&hisfilter=1"><span id="sort">10&nbsp&nbsp</span><span id="content">退伍回到家仅4小时 他救下整栋楼</span></a>  <span id="suffix"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="suspension">
+            <div id="up"><img id="suspension_up_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAA7VBMVEUAAAD////////s8v////+txP+qwv+4zf/w9f/2+P+hu//Q3f+yyP+4zf/Q3f////+kvv+90P+80f+2yv/S4P/T4P/M2//z9/+cuP/V4P9Whv////9Uhf9Sg/9Pgf9NgP/8/f9di/9Xh/9lkf5aif9qlP7z9//k7P/c5v+2y/94nv51nP6lv/+LrP6Ep/6BpP5gjf7v9P+wxv/U4f/M2/+sxP+vxv73+f/P3v/J2v+5zf+ivP+fuv9xmf+Ytv6Usv6Hqf58of5vl/7m7v/g6f+zyf6QsP75+//q8P/B0v/W4//C1P6+0P6qwv6ct/76fHZiAAAAGnRSTlMAGAaVR/Py45aC9Mfy2b8t9OPZ2ce/v4L0x/e74/EAAAIZSURBVDjLZVPXYuIwEDSmQ4BLv5O0ku3Yhwu2IZTQe0hy7f8/57QSoYR5sVea1c424wgzl324LRRuH7I507hEJluYucCFEOBGhWzmy7X5+N0WwIjTbrcdBsKulM0z96onGCGE2X6n+cTkj/CqJ480igzkNXp26E9JkABSbBz8i4Bn3EkH840mKHoxs49fZQzt2Kd03FQEzSB3WsejB9Jqf1CJQBM0wCurABWBoub0gkDENwyStTHA62pwSWDtklRQ4FLfjnaiPqVW60hAYeLKNHIREOZuKTL80H6XBFCwn4BAmDOyLiOQUIlOSEjaoS+Ju57NZuul73Fml4w6yAivSLBW3MGfcfBmIegmArg3alICdJHgy1jQt8Z/6CcC4DdGXhLIoiWRACpbLYbDYW80GnXp2GH8ShP+PUvEoHsAIFq9Xm8+kXlIwkkI9pm+05Tm3yWqu9EiB0pkwjWBx2i+tND1XqeZqpPU4VhUbq/ekR8CwTRVoRxf3ifTbeIwcONNsJZ2lxFVKDMv1KNvS2zXdrnD+COvR1PQpTZKNlKD3cLCOJNnivgVxkw169BunlKFaV9/B+LQbqOsByY4IVgDB59dl/cjR9TIJV1Lh7CGqUqH/DDPhhZYOPkdLz6m0X7GrzPHsSe6zJwzxvm+5NeNi8U5ABfn7mz7zHJFrZ6+BY6rd7m8kQtcAtwwXzq4n69/vZbP1+pn6/8fsrRmHUhmpYYAAAAASUVORK5CYII="></div>
+            <div id="down"><img id="suspension_down_img"  src="https://pss.bdstatic.com/static/superman/img/side/qrcode@2x-daf987ad02.png"></div>
+        </div>
+        <div id="foot">
+            <div id="foot_main">
+            <a id="foot_main_a">关于百度</a>
+            <a id="foot_main_a">About Baidu</a>
+            <a id="foot_main_a">使用百度前必读</a>
+            <a id="foot_main_a">帮助中心</a>
+            <a id="foot_main_a">企业推广</a>
+            <a id="foot_main_a">京公网安备11000002000001号</a>
+            <a id="foot_main_a">京ICP证030173号</a>
+            <a id="foot_main_a0">互联网新闻信息服务许可证11220180008</a>
+            <a id="foot_main_a0">网络文化经营许可证： 京网文〔2023〕1034-029号</a>
+            <a id="foot_main_a">信息网络传播视听节目许可证 0110516</a>
+            <a id="foot_main_a0">互联网宗教信息服务许可证编号：京（2022）0000043</a>
+            <a id="foot_main_a0">*</a>
+            <a id="foot_main_a1">^</a>
+            <div id="foot_main_div_div">
+            <div id="foot_main_div">药品医疗器械网络信息服务备案（京）网药械信息备字（2021）第00159号
+            医疗器械网络交易服务第三方平台备案凭证（京）网械平台备字（2020）第00002号
+            药品网络交易服务第三方平台备案凭证（京）网药平台备字〔2023〕第000002号
+            ©2025 Baidu </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
